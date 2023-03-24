@@ -5,7 +5,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1474,969</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1013,969</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Main2_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -81,7 +81,6 @@
       <AssemblyReference>System.Data.Entity</AssemblyReference>
       <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
       <AssemblyReference>System.Linq.Async</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <StateMachine InitialState="{x:Reference __ReferenceID3}" sap2010:Annotation.AnnotationText="Bot Name: Price Searching&#xA;BotID: N/A&#xA;Description: This Bot will search for prices in Amazon and Mercado Libre to make a comparation at the end of the process to decide where we might get the best price.&#xA;Aplications: Excel, Chrome, Drive, Google Cloud&#xA;&#xA;Authors: &#xA;Jordan Yair Medina Domiguez&#xA;Johab González Tellez&#xA;Heidy Cabieles Martínez" DisplayName="General Business Process" sap:VirtualizedContainerService.HintSize="687,904" sap2010:WorkflowViewState.IdRef="StateMachine_1">
@@ -232,23 +231,13 @@
                           <InArgument x:TypeArguments="ui:BusinessRuleException">[Nothing]</InArgument>
                         </Assign.Value>
                       </Assign>
-                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Process workflow" sap:VirtualizedContainerService.HintSize="438,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_24" UnSafe="False" WorkflowFileName="Modules\Process\Process.xaml">
+                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Process workflow" sap:VirtualizedContainerService.HintSize="438,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_24" UnSafe="False" WorkflowFileName="Process.xaml">
                         <ui:InvokeWorkflowFile.Arguments>
-                          <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem">
-                            <mva:VisualBasicValue x:TypeArguments="sd:DataRow" ExpressionText="TransactionItem" />
-                          </InArgument>
-                          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-                            <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="Config" />
-                          </InArgument>
-                          <InOutArgument x:TypeArguments="ui:Browser" x:Key="io_BrowserAmazon">
-                            <mva:VisualBasicReference x:TypeArguments="ui:Browser" ExpressionText="AmazonBrowser" />
-                          </InOutArgument>
-                          <InOutArgument x:TypeArguments="ui:Browser" x:Key="io_BrowserMercado">
-                            <mva:VisualBasicReference x:TypeArguments="ui:Browser" ExpressionText="MercadoBrowser" />
-                          </InOutArgument>
-                          <InOutArgument x:TypeArguments="x:Int32" x:Key="in_FilasCount">
-                            <mva:VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="FIlasContador" />
-                          </InOutArgument>
+                          <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem">[TransactionItem]</InArgument>
+                          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[Config]</InArgument>
+                          <InOutArgument x:TypeArguments="ui:Browser" x:Key="io_BrowserAmazon">[AmazonBrowser]</InOutArgument>
+                          <InOutArgument x:TypeArguments="ui:Browser" x:Key="io_BrowserMercado">[MercadoBrowser]</InOutArgument>
+                          <InOutArgument x:TypeArguments="x:Int32" x:Key="in_FilasCount">[FIlasContador]</InOutArgument>
                         </ui:InvokeWorkflowFile.Arguments>
                       </ui:InvokeWorkflowFile>
                       <TryCatch DisplayName="Try Catch Set Transaction Status (Success)" sap:VirtualizedContainerService.HintSize="438,341" sap2010:WorkflowViewState.IdRef="TryCatch_10">
@@ -639,29 +628,15 @@
                                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
-                                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Add Final Calculation To Excel workflow" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_32" UnSafe="False" WorkflowFileName="Modules\Excel\Add Final Calculation To Excel.xaml">
+                                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Add Final Calculation To Excel workflow" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_32" UnSafe="False" WorkflowFileName="Modules\Excel\AddFinalCalculationToExcel.xaml">
                                         <ui:InvokeWorkflowFile.Arguments>
-                                          <InArgument x:TypeArguments="x:String" x:Key="in_SheetName">
-                                            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Config(&quot;SheetName&quot;).ToString" />
-                                          </InArgument>
-                                          <InArgument x:TypeArguments="x:Int32" x:Key="In_Count">
-                                            <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="FIlasContador" />
-                                          </InArgument>
-                                          <InArgument x:TypeArguments="x:String" x:Key="in_TotalName">
-                                            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Config(&quot;TotalName&quot;).ToString" />
-                                          </InArgument>
-                                          <InArgument x:TypeArguments="x:String" x:Key="in_FinalFormula">
-                                            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Config(&quot;FinalFormula&quot;).ToString" />
-                                          </InArgument>
-                                          <InArgument x:TypeArguments="x:String" x:Key="in_SellerOneName">
-                                            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Config(&quot;SellerOneName&quot;).ToString" />
-                                          </InArgument>
-                                          <InArgument x:TypeArguments="x:String" x:Key="in_SellerTwoName">
-                                            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Config(&quot;SellerTwoName&quot;).ToString" />
-                                          </InArgument>
-                                          <InArgument x:TypeArguments="x:String" x:Key="in_OutputPath">
-                                            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Config(&quot;OutputsPath&quot;).ToString" />
-                                          </InArgument>
+                                          <InArgument x:TypeArguments="x:String" x:Key="in_SheetName">[Config("SheetName").ToString]</InArgument>
+                                          <InArgument x:TypeArguments="x:Int32" x:Key="In_Count">[FIlasContador]</InArgument>
+                                          <InArgument x:TypeArguments="x:String" x:Key="in_TotalName">[Config("TotalName").ToString]</InArgument>
+                                          <InArgument x:TypeArguments="x:String" x:Key="in_FinalFormula">[Config("FinalFormula").ToString]</InArgument>
+                                          <InArgument x:TypeArguments="x:String" x:Key="in_SellerOneName">[Config("SellerOneName").ToString]</InArgument>
+                                          <InArgument x:TypeArguments="x:String" x:Key="in_SellerTwoName">[Config("SellerTwoName").ToString]</InArgument>
+                                          <InArgument x:TypeArguments="x:String" x:Key="in_OutputPath">[Config("OutputsPath").ToString]</InArgument>
                                         </ui:InvokeWorkflowFile.Arguments>
                                       </ui:InvokeWorkflowFile>
                                       <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke CloseAllApplications workflow" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_21" UnSafe="False" WorkflowFileName="Framework\CloseAllApplications.xaml">
@@ -812,11 +787,7 @@
       <Variable x:TypeArguments="x:Int32" sap2010:Annotation.AnnotationText="Used to control the number of consecutive system exceptions." Default="0" Name="ConsecutiveSystemExceptions" />
       <Variable x:TypeArguments="ui:Browser" sap2010:Annotation.AnnotationText="Used to keep the browser with Amazon updated and Re-attach with each transaction" Name="AmazonBrowser" />
       <Variable x:TypeArguments="ui:Browser" sap2010:Annotation.AnnotationText="Used to keep the browser with Mercado Libre updated and Re-attach with each transaction" Name="MercadoBrowser" />
-      <Variable x:TypeArguments="x:Int32" sap2010:Annotation.AnnotationText="Used to keep the row count in the output excel in each transaction" Name="FIlasContador">
-        <Variable.Default>
-          <Literal x:TypeArguments="x:Int32" Value="2" />
-        </Variable.Default>
-      </Variable>
+      <Variable x:TypeArguments="x:Int32" sap2010:Annotation.AnnotationText="Used to keep the row count in the output excel in each transaction" Default="2" Name="FIlasContador" />
     </StateMachine.Variables>
   </StateMachine>
 </Activity>
